@@ -1,4 +1,33 @@
+import 'dart:io';
+
+import '../start/start.dart';
+
 class Create {
+  static void startFlutterCreate(
+    String projectName,
+    String projectDescription,
+    String projectOrg,
+    bool isKotlin,
+    bool isSwift,
+    bool isAndroidX,
+  ) {
+    //  mainDirectory = projectName + '/';
+
+    final flutterArgs = makeArgs(projectName, projectDescription, projectOrg,
+        isKotlin, isSwift, isAndroidX);
+
+    Process.start('flutter', flutterArgs, runInShell: true).then((process) {
+      // stdout.addStream(process.stdout);
+      stderr.addStream(process.stderr);
+      process.exitCode.then((exit) {
+        if (exit == 0) {
+          print("called");
+          Start.start(directory: Directory(projectName));
+        }
+      });
+    });
+  }
+
   /// Create Arguments to pass to the initial flutter command for creating
   /// a project.
   static List<String> makeArgs(String projectName, String? projectDescription,
@@ -39,6 +68,4 @@ class Create {
     flutterArgs.add(projectName);
     return flutterArgs;
   }
-
-
 }

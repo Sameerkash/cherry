@@ -25,12 +25,21 @@ class Start {
   static standardInstall(String directory) async {
     await removeAllPackages(directory);
 
-    output.msg('Instaling hooks_riverpod...');
-    await Install.install(['hooks_riverpod'], false, directory: directory);
-
-    output.msg('Instaling freezed...');
-    await Install.install(['freezed_annotation'], false, directory: directory);
-    await Install.install(['freezed'], true, directory: directory);
+    output.title('installing dependencies 🔨');
+    await Install.install([
+      'hooks_riverpod',
+      'flutter_hooks',
+      'auto_route',
+      'freezed_annotation',
+      'json_annotation',
+      'dartz',
+      'auto_size_text',
+      'sembast'
+    ], false, directory: directory);
+    await Install.install(
+        ['freezed', 'build_runner', 'auto_route_generator', 'lint'], true,
+        directory: directory);
+    output.success('Your cherry🍒 picked project is ready');
     exit(0);
   }
 

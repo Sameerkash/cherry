@@ -46,7 +46,7 @@ class Install {
           node.insert(isDev ? indexDependencyDev : indexDependency,
               '  $packName: \n    $version');
         }
-        output.success('$packName:$version Added in pubspec');
+        // output.success('$packName:$version Added in pubspec');
         isAlter = true;
       } catch (e) {
         output.error('Version or package not found, $e');

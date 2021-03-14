@@ -42,7 +42,7 @@ class CreateCommand extends BaseCommand {
     } else {
       Create.startFlutterCreate(
         argResults!.rest.first,
-        argResults!['description'] ?? "A new Cherry pciked flutter project",
+        argResults!['description'] ?? "A new Cherry picked flutter project",
         argResults!['org'] ?? 'com.example',
         argResults!['kotlin'],
         argResults!['swift'],

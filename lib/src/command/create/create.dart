@@ -1,4 +1,5 @@
 import 'dart:io';
+import '../../util/output_util.dart' as output;
 
 import '../start/start.dart';
 
@@ -18,10 +19,10 @@ class Create {
 
     Process.start('flutter', flutterArgs, runInShell: true).then((process) {
       // stdout.addStream(process.stdout);
+      output.title("Running flutter create");
       stderr.addStream(process.stderr);
       process.exitCode.then((exit) {
         if (exit == 0) {
-          print("called");
           Start.start(directory: Directory(projectName));
         }
       });

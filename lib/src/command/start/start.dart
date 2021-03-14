@@ -4,27 +4,34 @@ import '../../util/util.dart';
 import 'package:dart_console/dart_console.dart';
 import '../../util/output_util.dart' as output;
 
-
 class Start {
   static void start({Directory? directory}) async {
     directory ??= Directory('lib');
-    await standardInstall(directory.path);
+    var selectedIndex = 0;
+
+    selectedIndex = stateCLIOptions(
+        "Choose an option", ["standard", "customize", "minimal"]);
+    if (selectedIndex == 1) {
+      output.warn("Coming Soon");
+    } else if (selectedIndex == 2) {
+      output.warn("Coming Soon");
+    } else if (selectedIndex == -1) {
+      output.error("please selected a valid option");
+    } else {
+      await standardInstall(directory.path);
+    }
   }
 
   static standardInstall(String directory) async {
-    // return () async {
-      await removeAllPackages(directory);
-      print(directory);
+    await removeAllPackages(directory);
 
-      output.msg('Instaling hooks_riverpod...');
-      await Install.install(['hooks_riverpod'], false, directory: directory, haveTwoLines: false);
+    output.msg('Instaling hooks_riverpod...');
+    await Install.install(['hooks_riverpod'], false, directory: directory);
 
-      output.msg('Instaling freezed...');
-      await Install.install(['freezed_annotation'], false,
-          directory: directory);
-      await Install.install(['freezed'], true, directory: directory);
-      exit(0);
-    // };
+    output.msg('Instaling freezed...');
+    await Install.install(['freezed_annotation'], false, directory: directory);
+    await Install.install(['freezed'], true, directory: directory);
+    exit(0);
   }
 
   static int stateCLIOptions(String title, List<String> options) {

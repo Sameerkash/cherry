@@ -49,7 +49,7 @@ class Install {
         output.success('$packName:$version Added in pubspec');
         isAlter = true;
       } catch (e) {
-        output.error('Version or package not found');
+        output.error('Version or package not found, $e');
       }
 
       // spec = isDev

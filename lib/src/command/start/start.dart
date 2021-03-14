@@ -2,30 +2,29 @@ import 'dart:io';
 import '../install/install.dart';
 import '../../util/util.dart';
 import 'package:dart_console/dart_console.dart';
-
 import '../../util/output_util.dart' as output;
+
 
 class Start {
   static void start({Directory? directory}) async {
     directory ??= Directory('lib');
-     standardInstall(directory.path);
+    await standardInstall(directory.path);
   }
 
   static standardInstall(String directory) async {
-    return () async {
+    // return () async {
       await removeAllPackages(directory);
       print(directory);
 
       output.msg('Instaling hooks_riverpod...');
-      await Install.install(['hooks_riverpod'], false, directory: directory);
+      await Install.install(['hooks_riverpod'], false, directory: directory, haveTwoLines: false);
 
       output.msg('Instaling freezed...');
       await Install.install(['freezed_annotation'], false,
           directory: directory);
       await Install.install(['freezed'], true, directory: directory);
-
-      exit(1);
-    };
+      exit(0);
+    // };
   }
 
   static int stateCLIOptions(String title, List<String> options) {

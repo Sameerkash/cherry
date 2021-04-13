@@ -1,7 +1,7 @@
 name: cherry
 description: Dart CLI template generator and package manager for flutter, generate MVC, MVVM and MVU patterns.
-version: 0.0.1
-homepage: null
+version: 0.0.1-alpha
+homepage: https://github.com/Sameerkash/cherry
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

@@ -1,3 +1,3 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1-alpha] - Initial Alpha Release
 
-* TODO: Describe initial release.
+- Ability to create project with set of packages

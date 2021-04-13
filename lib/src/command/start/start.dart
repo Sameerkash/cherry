@@ -1,4 +1,7 @@
 import 'dart:io';
+import 'package:args/command_runner.dart';
+import 'package:cherry/src/command/generate/generate_command.dart';
+
 import '../install/install.dart';
 import '../../util/util.dart';
 import 'package:dart_console/dart_console.dart';
@@ -39,7 +42,12 @@ class Start {
     await Install.install(
         ['freezed', 'build_runner', 'auto_route_generator', 'lint'], true,
         directory: directory);
-    output.success('Your cherry🍒 picked project is ready');
+
+    var command = CommandRunner('cherry',
+        'Dart CLI template generator and package manager for flutter, generate MVC, MVVM and MVU patterns');
+    command.addCommand(GenerateCommand());
+    await command.run(['generate', 'repository']);
+    output.success('Your cherry🍒 picked flutter project is ready');
     exit(0);
   }
 

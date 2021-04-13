@@ -2,6 +2,7 @@ import 'package:args/args.dart';
 import 'package:args/command_runner.dart';
 import 'package:cherry/cherry.dart';
 import 'package:cherry/src/command/create/create_command.dart';
+import 'package:cherry/src/command/generate/generate_command.dart';
 import 'package:cherry/src/command/install/install_command.dart';
 import 'package:cherry/src/util/version.dart';
 
@@ -43,7 +44,8 @@ CommandRunner configureCommand(List<String> arguments) {
       CommandRunner('Cherry', 'CLI package manager and template for Flutter.')
         ..addCommand(CreateCommand())
         ..addCommand(InstallCommand())
-        ..addCommand(StartCommand());
+        ..addCommand(StartCommand())
+        ..addCommand(GenerateCommand());
 
   runner.argParser.addFlag('version', abbr: 'v', negatable: false);
   return runner;
